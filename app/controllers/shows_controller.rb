@@ -4,7 +4,11 @@ class ShowsController < ApplicationController
   # GET /shows
   # GET /shows.json
   def index
-    @shows = Show.all
+    if params[:query].blank?
+      @shows = Show.all
+    else
+      @shows = search
+    end
   end
 
   # GET /shows/1
@@ -60,6 +64,21 @@ class ShowsController < ApplicationController
       format.html { redirect_to shows_url, notice: 'Show was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # TODO - Dirty approach
+  def search
+    tagged_result = Show.tagged_with(params[:query])
+    show_result = Show.where('title LIKE ?', "%#{params[:query]}")
+    return nil if tagged_result.blank? && show_result.blank?
+    
+    unless tagged_result.blank? && show_result.blank?
+      return tagged_result + show_result
+    end
+    
+    return tagged_result if show_result.blank?
+    
+    show_result
   end
 
   private
