@@ -70,6 +70,6 @@ class ShowsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def show_params
-      params.require(:show).permit(:title, :description, :start_time, :end_time, :channel_id)
+      params.require(:show).permit(:title, :description, :start_time, :end_time, :channel_id, :tag_list, :favourite)
     end
 end
