@@ -7,6 +7,8 @@ namespace: :email_reminders do
   	shows = Show.favorites
   	show.each do |show|
   		if Time.now - show.start_time <= 30.minutes
+  		  Usermailer.email(show.user, show).deliver
+  		end
   	end
   end
 end
