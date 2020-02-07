@@ -1,4 +1,5 @@
 class ShowsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_show, only: [:show, :edit, :update, :destroy]
 
   # GET /shows
@@ -29,7 +30,7 @@ class ShowsController < ApplicationController
   # POST /shows.json
   def create
     @show = Show.new(show_params)
-    
+    @show.user = current_user
     
     respond_to do |format|
       if @show.save
