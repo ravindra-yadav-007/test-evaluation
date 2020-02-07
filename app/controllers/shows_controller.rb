@@ -25,7 +25,8 @@ class ShowsController < ApplicationController
   # POST /shows.json
   def create
     @show = Show.new(show_params)
-
+    
+    
     respond_to do |format|
       if @show.save
         format.html { redirect_to @show, notice: 'Show was successfully created.' }

@@ -1,2 +1,2 @@
-json.extract! show, :id, :title, :desciption, :start_time, :end_time, :created_at, :updated_at
+json.extract! show, :id, :title, :description, :start_time, :end_time, :tag_list, :created_at, :updated_at
 json.url show_url(show, format: :json)

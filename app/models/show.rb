@@ -1,4 +1,5 @@
 class Show < ApplicationRecord
 	belongs_to :channel
-	acts_as_taggable_on :channels
+	acts_as_taggable
+	validates :title, :description, :start_time, :end_time, presence: true
 end

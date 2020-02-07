@@ -15,8 +15,8 @@
     <%= form.text_field :title, class: "form-control" %>
   </p>
   <p>
-    <%= form.label :desciption %>
-    <%= form.text_area :desciption, class: "form-control" %>
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "form-control" %>
   </p>
   <p>
     <%= form.label :start_time %>
@@ -29,6 +29,10 @@
   <p>
     <%= form.label :channel %>
     <%= form.select :channel_id, Channel.all.collect {|x| [x.name, x.id]}, {}, class: "form-control" %>
+  </p>
+  <p>
+    <%= form.label :channel_tag_list %>
+    <%= form.text_field :tag_list, class: "form-control"%>
   </p>
   <div class="actions">
     <%= form.submit %>
